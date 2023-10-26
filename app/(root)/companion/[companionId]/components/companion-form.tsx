@@ -56,18 +56,21 @@ export const CompanionForm: FC<CompanionFormProps> = ({initialData, categories})
   return <div className={"h-full p-4 space-y-2 max-w-3xl mx-auto"}>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-8 pb-10"}>
-        <div className={"space-y-2 w-full col-span-2"}>
+        <div className={"space-y-2 w-full"}>
           <div>
             <h3 className={"text-lg"}>General Information</h3>
             <p className={"text-sm text-muted-foreground"}>General information about your Companion</p>
           </div>
           <Separator className={"bg-primary/10"}/>
         </div>
-        <FormField name={"src"}
-                   render={(field) => (
-                     <FormItem className={"flex flex-col items-center justify-center space-y-4 col-span-2"}>
-                        <FormControl/>
-                     </FormItem>)}/>
+        <FormField
+          name={"src"}
+          render={(field) => (
+            <FormItem className={"flex flex-col items-center justify-center space-y-4"}>
+              <FormControl>
+                Image Upload Component
+              </FormControl>
+            </FormItem>)}/>
       </form>
     </Form>
   </div>
