@@ -5,6 +5,8 @@ import {Category, Companion} from "@prisma/client";
 import {FC} from "react";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {Form, FormControl, FormField, FormItem} from "@/components/ui/form";
+import {Separator} from "@/components/ui/separator";
 
 interface CompanionFormProps {
   initialData: Companion | null
@@ -45,11 +47,28 @@ export const CompanionForm: FC<CompanionFormProps> = ({initialData, categories})
     }
   })
 
-  const isLoading = () => {
+  const isLoading = form.formState.isSubmitting
 
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log(values)
   }
 
-  return <div>
-    Companion Form
+  return <div className={"h-full p-4 space-y-2 max-w-3xl mx-auto"}>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-8 pb-10"}>
+        <div className={"space-y-2 w-full col-span-2"}>
+          <div>
+            <h3 className={"text-lg"}>General Information</h3>
+            <p className={"text-sm text-muted-foreground"}>General information about your Companion</p>
+          </div>
+          <Separator className={"bg-primary/10"}/>
+        </div>
+        <FormField name={"src"}
+                   render={(field) => (
+                     <FormItem className={"flex flex-col items-center justify-center space-y-4 col-span-2"}>
+                        <FormControl/>
+                     </FormItem>)}/>
+      </form>
+    </Form>
   </div>
 }
