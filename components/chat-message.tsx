@@ -25,9 +25,10 @@ const ChatMessage: FC<ChatMessageProps> = ({role, content, isLoading, src}) => {
     if (!content) {
       return
     }
-    navigator.clipboard.writeText(content)
-    toast({
-      description: "Message copied to clipboard"
+    navigator.clipboard.writeText(content).then(() => {
+      toast({
+        description: "Message copied to clipboard"
+      })
     })
   }
 
